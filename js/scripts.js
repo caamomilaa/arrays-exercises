@@ -1,87 +1,113 @@
 // 1️⃣ Camila está organizando la lista de asistentes para una conferencia. Tiene un array con nombres, por ejemplo: ["Pedro", "Ana", "Sofía", "Luis"]. Quiere saber si "Ana" está en la lista y, si es así, debe imprimir "Invitada confirmada en la posición X". Si no está, debe imprimir "Invitada no encontrada".
 
 const itIsInTheGuestList = guestNames => {
-	if (guestNames.includes('Ana')) {
-		console.log(
-			`Invitada confirmada en la posición ${guestNames.indexOf('Ana')}.`
-		);
-	} else {
-		console.log(`Invitada no encontrada.`);
-	}
+  if (guestNames.includes('Ana')) {
+    console.log(
+      `Invitada confirmada en la posición ${guestNames.indexOf('Ana')}.`
+    );
+  } else {
+    console.log(`Invitada no encontrada.`);
+  }
 };
 itIsInTheGuestList(['Pedro', 'Ana', 'Sofía', 'Luis']);
 
 // 2️⃣ Bego está buscando un producto específico en su tienda. La lista de productos es: ["Camiseta", "Pantalón", "Gorra", "Zapatos"]. Necesita saber en qué posición se encuentra "Gorra". Si lo encuentra, debe mostrar su posición. Si no lo encuentra, debe mostrar "Producto no disponible".
 
 const searchAProduct = product => {
-	const productsList = ['Camiseta', 'Pantalón', 'Gorra', 'Zapatos'];
-	if (productsList.includes(product)) {
-		console.log(
-			`Se encuentra en la estantería ${productsList.indexOf('Gorra')}.`
-		);
-	} else {
-		console.log('Producto no disponible.');
-	}
+  const productsList = ['Camiseta', 'Pantalón', 'Gorra', 'Zapatos'];
+  if (productsList.includes(product)) {
+    console.log(
+      `Se encuentra en la estantería ${productsList.indexOf('Gorra')}.`
+    );
+  } else {
+    console.log('Producto no disponible.');
+  }
 };
 searchAProduct('Gorra');
 
 // 3️⃣ Sabrina está revisando su lista de correos electrónicos para enviar promociones, por ejemplo: ["cliente1@gmail.com", "cliente2@hotmail.com", "cliente3@gmail.com"]. Quiere asegurarse de que al menos uno de los correos pertenece a Gmail. Si lo encuentra, debe mostrar "Correo de Gmail encontrado". Si no, "No hay correos de Gmail".
 
 const searchMailDomain = domain => {
-	const mailsList = [
-		'cliente1@gmail.com',
-		'cliente2@hotmail.com',
-		'cliente3@gmail.com'
-	];
-	if (mailsList[0].includes(domain)) {
-		console.log(`Correo de Gmail encontrado.`);
-	} else {
-		console.log(`No hay correos de Gmail.`);
-	}
-	if (mailsList[1].includes(domain)) {
-		console.log(`Correo de Gmail encontrado.`);
-	} else {
-		console.log(`No hay correos de Gmail.`);
-	}
-	if (mailsList[2].includes(domain)) {
-		console.log(`Correo de Gmail encontrado.`);
-	} else {
-		console.log(`No hay correos de Gmail.`);
-	}
+  const mailsList = [
+    'cliente1@gmail.com',
+    'cliente2@hotmail.com',
+    'cliente3@gmail.com'
+  ];
+  if (mailsList[0].includes(domain)) {
+    console.log(`Correo de Gmail encontrado.`);
+  } else {
+    console.log(`No hay correos de Gmail.`);
+  }
+  if (mailsList[1].includes(domain)) {
+    console.log(`Correo de Gmail encontrado.`);
+  } else {
+    console.log(`No hay correos de Gmail.`);
+  }
+  if (mailsList[2].includes(domain)) {
+    console.log(`Correo de Gmail encontrado.`);
+  } else {
+    console.log(`No hay correos de Gmail.`);
+  }
 };
 
 searchMailDomain('@gmail');
 
 // 4️⃣ Macarena necesita generar un identificador único para cada usuario. Recibe un array con nombre y apellido, (por ejemplo: ['Enrique Sofresco', 'Esther Colero', 'Leandro Gado']) y debe imprimir las dos primeras letras de cada nombre y de cada apellido en mayúsculas, seguidas de un número aleatorio entre 10 y 99.
 
+const extractTwoFirstLetter = word => {
+  const letters =
+    word.substring(0, word.indexOf(' ')).charAt(0).toUpperCase() +
+    word.substring(0, word.indexOf(' ')).charAt(1).toUpperCase() +
+    word
+      .substring(word.indexOf(' ') + 1)
+      .charAt(0)
+      .toUpperCase() +
+    word
+      .substring(word.indexOf(' ') + 2)
+      .charAt(0)
+      .toUpperCase();
+  return letters;
+};
+
+const generateUsername = names => {
+  const firstValue =
+    extractTwoFirstLetter(names[0]) + Math.floor(Math.random() * 99);
+  const secondValue =
+    extractTwoFirstLetter(names[1]) + Math.floor(Math.random() * 99);
+  const thirdValue =
+    extractTwoFirstLetter(names[2]) + Math.floor(Math.random() * 99);
+
+  console.log(firstValue, secondValue, thirdValue);
+};
+generateUsername(['Enrique Sofresco', 'Esther Colero', 'Leandro Gado']);
 // 5️⃣ Abby encontró una caja fuerte con un código de acceso en un array de cuatro dígitos, por ejemplo: [1, 5, 3, 8]. Si la suma del primer y el último número es par, imprimirá "Acceso concedido", si no, "Acceso denegado".
 
 const isValidCode = code => {
-	if ((code[0] + code[code.length - 1]) % 2 === 0) {
-		console.log('Acceso concedido.');
-	} else {
-		console.log('Acceso denegado.');
-	}
+  if ((code[0] + code[code.length - 1]) % 2 === 0) {
+    console.log('Acceso concedido.');
+  } else {
+    console.log('Acceso denegado.');
+  }
 };
 isValidCode([1, 5, 3, 8]);
 
 // 6️⃣ Camila quiere generar dos números aleatorios entre 1 y 100 y determinar cuál es el mayor. Después los guardará en un array poniendo en la primera posición el mayor y en segunda posición el menor. Si son iguales, imprimirá "Empate", si no, imprimirá el array.
 
 const generateRandomNumbers = emptyArray => {
-	const firstNumber = Math.floor(Math.random() * 100);
-	const secondNumber = Math.floor(Math.random() * 100);
-	if (firstNumber > secondNumber) {
-		emptyArray.unshift(firstNumber);
-		emptyArray.push(secondNumber);
-	} else if (secondNumber > firstNumber) {
-		emptyArray.unshift(secondNumber);
-		emptyArray.push(firstNumber);
-	}
-	if (firstNumber === secondNumber) {
-		console.log('EMPATE');
-	} else {
-		console.log(emptyArray);
-	}
+  const firstNumber = Math.floor(Math.random() * 100);
+  const secondNumber = Math.floor(Math.random() * 100);
+  if (firstNumber > secondNumber) {
+    emptyArray.unshift(firstNumber);
+    emptyArray.push(secondNumber);
+  } else if (secondNumber > firstNumber) {
+    emptyArray.unshift(secondNumber);
+    emptyArray.push(firstNumber);
+  }
+  if (firstNumber === secondNumber) {
+    console.log('EMPATE');
+  } else {
+    console.log(emptyArray);
+  }
 };
 generateRandomNumbers([]);
 
@@ -93,33 +119,33 @@ generateRandomNumbers([]);
 // Precio: 40 | Número generado: 30 | Precio final: 36 (10% de descuento)
 
 const getDiscount = originalPrice => {
-	const firstNumber = Math.floor(Math.random() * 100);
-	const secondNumber = Math.floor(Math.random() * 100);
-	const thirdNumber = Math.floor(Math.random() * 100);
-	if (firstNumber > 50) {
-		originalPrice[0] - originalPrice[0] * 0.1;
-	} else {
-		originalPrice[0] - originalPrice[0] * 0.2;
-	}
-	if (secondNumber > 50) {
-		originalPrice[0] - originalPrice[0] * 0.1;
-	} else {
-		originalPrice[0] - originalPrice[0] * 0.2;
-	}
-	if (thirdNumber > 50) {
-		originalPrice[0] - originalPrice[0] * 0.1;
-	} else {
-		originalPrice[0] - originalPrice[0] * 0.2;
-	}
-	console.log(
-		`Precio: ${originalPrice[0]} | Número generado: ${firstNumber} | Precio final:`
-	);
-	console.log(
-		`Precio: ${originalPrice[1]} | Número generado: ${secondNumber} | Precio final:`
-	);
-	console.log(
-		`Precio: ${originalPrice[2]} | Número generado: ${thirdNumber} | Precio final:`
-	);
+  const firstNumber = Math.floor(Math.random() * 100);
+  const secondNumber = Math.floor(Math.random() * 100);
+  const thirdNumber = Math.floor(Math.random() * 100);
+  if (firstNumber > 50) {
+    originalPrice[0] - originalPrice[0] * 0.1;
+  } else {
+    originalPrice[0] - originalPrice[0] * 0.2;
+  }
+  if (secondNumber > 50) {
+    originalPrice[0] - originalPrice[0] * 0.1;
+  } else {
+    originalPrice[0] - originalPrice[0] * 0.2;
+  }
+  if (thirdNumber > 50) {
+    originalPrice[0] - originalPrice[0] * 0.1;
+  } else {
+    originalPrice[0] - originalPrice[0] * 0.2;
+  }
+  console.log(
+    `Precio: ${originalPrice[0]} | Número generado: ${firstNumber} | Precio final:`
+  );
+  console.log(
+    `Precio: ${originalPrice[1]} | Número generado: ${secondNumber} | Precio final:`
+  );
+  console.log(
+    `Precio: ${originalPrice[2]} | Número generado: ${thirdNumber} | Precio final:`
+  );
 };
 getDiscount([120, 75, 40]);
 
@@ -131,11 +157,11 @@ getDiscount([120, 75, 40]);
 // Cuenta original: 93 | Dividido: 31 | Precio final: 32 (Redondeado al número par más cercano)
 
 const howMuchEachOnePay = bill => {
-	const firstBill = bill[0] % 3;
-	const secondBill = bill[0];
-	const thirdBill = bill[0];
-	if (firstBill !== 0) {
-	}
+  const firstBill = bill[0] % 3;
+  const secondBill = bill[0];
+  const thirdBill = bill[0];
+  if (firstBill !== 0) {
+  }
 };
 howMuchEachOnePay([120, 75, 93]);
 // 9️⃣ Macarena quiere calcular la edad de tres clientes. Recibe un array con tres años de nacimiento entre 1950 y 2010. Sabiendo que estamos en el año 2025, debe calcular la edad de cada uno y determinar si al menos uno es mayor de 18. Si hay al menos un cliente mayor de edad, imprimirá "Hay un cliente mayor de edad", si no, "Todos son menores de edad".
